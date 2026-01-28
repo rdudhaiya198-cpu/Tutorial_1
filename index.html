@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Questions 1-10 — Completed</title>
+  <style>
+    body{font-family:Segoe UI,Arial;margin:18px;max-width:980px;background:#f8f9fb}
+    section{border:1px solid #eee;padding:12px;margin-bottom:12px;border-radius:6px;box-shadow:0 1px 2px rgba(0,0,0,.06);background:#fff}
+    h2{margin:0 0 8px;color:#333}
+    .row{display:flex;gap:8px;align-items:center}
+    input[type=text]{flex:1;padding:6px}
+    button{padding:6px 10px;border:1px solid #0d6efd;background:#0d6efd;color:#fff;border-radius:6px;cursor:pointer}
+    button:hover{background:#0b5ed7;border-color:#0b5ed7}
+    pre{background:#fafafa;padding:8px;border:1px solid #f0f0f0;border-radius:6px}
+    .note{font-size:13px;color:#555}
+      pre.code{background:#1e1e1e;color:#dcdcdc;white-space:pre-wrap;padding:12px;overflow:auto;border-radius:6px}
+  </style>
+</head>
+<body>
+  <h1>Questions 1–10 — Completed (runnable)</h1>
+  <p class="note">Use the controls to run each solution. Default values demonstrate outputs.</p>
+
+  <section id="q1">
+    <h2>1. Print numbers from 1 to 10</h2>
+    
+    <div class="row">
+      <button onclick="runQ1()">Run</button>
+      <button onclick="toggleCode(1)">Show Code</button>
+    </div>
+    <pre id="out1"></pre>
+      <pre id="code1" class="code" style="display:none"></pre>
+  </section>
+
+  <section id="q2">
+    <h2>2. Check even number</h2>
+    <div class="row">
+      <input id="q2in" type="text" value="8">
+      <button onclick="runQ2()">Check</button>
+      <button onclick="toggleCode(2)">Show Code</button>
+    </div>
+    <pre id="out2"></pre>
+    <pre id="code2" class="code" style="display:none"></pre>
+  </section>
+
+  <section id="q3">
+    <h2>3. Largest number in an array</h2>
+    <div class="row">
+      <input id="q3in" type="text" value="10,5,85,70,96,4">
+      <button onclick="runQ3()">Find Largest</button>
+      <button onclick="toggleCode(3)">Show Code</button>
+    </div>
+    <pre id="out3"></pre>
+    <pre id="code3" class="code" style="display:none"></pre>
+  </section>
+
+  <section id="q4">
+    <h2>4. Reverse a string</h2>
+    <div class="row">
+      <input id="q4in" type="text" value="hello">
+      <button onclick="runQ4()">Reverse</button>
+        <button onclick="toggleCode(4)">Show Code</button>
+    </div>
+    <pre id="out4"></pre>
+      <pre id="code4" class="code" style="display:none"></pre>
+  </section>
+
+  <section id="q5">
+    <h2>5. Count vowels</h2>
+    <div class="row">
+      <input id="q5in" type="text" value="This is a test">
+      <button onclick="runQ5()">Count</button>
+        <button onclick="toggleCode(5)">Show Code</button>
+    </div>
+    <pre id="out5"></pre>
+      <pre id="code5" class="code" style="display:none"></pre>
+  </section>
+
+  <section id="q6">
+    <h2>6. Even numbers from array</h2>
+    <div class="row">
+      <input id="q6in" type="text" value="10,15,22,33,40,55,60">
+      <button onclick="runQ6()">Filter Even</button>
+        <button onclick="toggleCode(6)">Show Code</button>
+    </div>
+    <pre id="out6"></pre>
+      <pre id="code6" class="code" style="display:none"></pre>
+  </section>
+
+  <section id="q7">
+    <h2>7. Factorial of n</h2>
+    <div class="row">
+      <input id="q7in" type="text" value="6">
+      <button onclick="runQ7()">Calculate</button>
+        <button onclick="toggleCode(7)">Show Code</button>
+    </div>
+    <pre id="out7"></pre>
+      <pre id="code7" class="code" style="display:none"></pre>
+  </section>
+
+  <section id="q8">
+    <h2>8. Palindrome check</h2>
+    <div class="row">
+      <input id="q8in" type="text" value="Race car">
+      <button onclick="runQ8()">Check</button>
+        <button onclick="toggleCode(8)">Show Code</button>
+    </div>
+    <pre id="out8"></pre>
+      <pre id="code8" class="code" style="display:none"></pre>
+  </section>
+
+  <section id="q9">
+    <h2>9. Remove duplicate elements</h2>
+    <div class="row">
+      <input id="q9in" type="text" value="1,2,2,3,4,4,5,5,6">
+      <button onclick="runQ9()">Remove Duplicates</button>
+        <button onclick="toggleCode(9)">Show Code</button>
+    </div>
+    <pre id="out9"></pre>
+      <pre id="code9" class="code" style="display:none"></pre>
+  </section>
+
+  <section id="q10">
+    <h2>10. Sum of array elements</h2>
+    <div class="row">
+      <input id="q10in" type="text" value="10,20,30,5,35">
+      <button onclick="runQ10()">Sum</button>
+        <button onclick="toggleCode(10)">Show Code</button>
+    </div>
+    <pre id="out10"></pre>
+      <pre id="code10" class="code" style="display:none"></pre>
+  </section>
+
+  <script>
+    function parseNumbers(s){
+      if(!s) return [];
+      return s.split(',').map(function(x){return Number(x.trim());}).filter(function(n){return !isNaN(n);});
+    }
+
+    function runQ1(){
+      var out = [];
+      for(var i=1;i<=10;i++) out.push(i);
+      document.getElementById('out1').textContent = out.join('\n');
+    }
+
+    function runQ2(){
+      var n = Number(document.getElementById('q2in').value);
+      var res = (n % 2 === 0) ? 'True' : 'False';
+      document.getElementById('out2').textContent = 'Number: ' + n + '\nIs even? ' + res;
+    }
+
+    function runQ3(){
+      var arr = parseNumbers(document.getElementById('q3in').value);
+      if(arr.length===0) return document.getElementById('out3').textContent = 'No numbers provided';
+      var largest = arr[0];
+      for(var i=1;i<arr.length;i++) if(arr[i]>largest) largest=arr[i];
+      document.getElementById('out3').textContent = 'Array: ' + arr.join(', ') + '\nLargest: ' + largest;
+    }
+
+    function runQ4(){
+      var s = document.getElementById('q4in').value || '';
+      var rev = '';
+      for(var i=s.length-1;i>=0;i--) rev += s[i];
+      document.getElementById('out4').textContent = 'Original: ' + s + '\nReversed: ' + rev;
+    }
+
+    function runQ5(){
+      var s = (document.getElementById('q5in').value || '').toLowerCase();
+      var count = 0;
+      for(var i=0;i<s.length;i++){ if('aeiou'.indexOf(s[i])!==-1) count++; }
+      document.getElementById('out5').textContent = 'Text: ' + s + '\nVowel count: ' + count;
+    }
+
+    function runQ6(){
+      var arr = parseNumbers(document.getElementById('q6in').value);
+      var evens = arr.filter(function(x){ return x % 2 === 0; });
+      document.getElementById('out6').textContent = 'Original: ' + arr.join(', ') + '\nEven numbers: ' + evens.join(', ');
+    }
+
+    function runQ7(){
+      var n = Math.floor(Number(document.getElementById('q7in').value));
+      if(isNaN(n) || n<0) return document.getElementById('out7').textContent = 'Enter non-negative integer';
+      var fact = 1;
+      for(var i=1;i<=n;i++) fact *= i;
+      document.getElementById('out7').textContent = 'n: ' + n + '\nFactorial: ' + fact;
+    }
+
+    function runQ8(){
+      var s = document.getElementById('q8in').value || '';
+      var clean = s.toLowerCase().replace(/[^a-z0-9]/g,'');
+      var rev = clean.split('').reverse().join('');
+      var res = (clean && clean===rev) ? 'Palindrome' : 'Not a palindrome';
+      document.getElementById('out8').textContent = 'Input: ' + s + '\nResult: ' + res;
+    }
+
+    function runQ9(){
+      var arr = parseNumbers(document.getElementById('q9in').value);
+      var unique = Array.from(new Set(arr));
+      document.getElementById('out9').textContent = 'Original: ' + arr.join(', ') + '\nUnique: ' + unique.join(', ');
+    }
+
+    function runQ10(){
+      var arr = parseNumbers(document.getElementById('q10in').value);
+      var sum = arr.reduce(function(acc,v){return acc+v;},0);
+      document.getElementById('out10').textContent = 'Array: ' + arr.join(', ') + '\nSum: ' + sum;
+    }
+
+    // initialize outputs with defaults
+    runQ1(); runQ2(); runQ3(); runQ4(); runQ5(); runQ6(); runQ7(); runQ8(); runQ9(); runQ10();
+
+    // Embedded code blocks from qu1.html (for offline display)
+    var QCODE = {
+      1: `<!-- 1.Write a program to print numbers from 1 to 10. -->\n\n<!-- <!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Question 1</title>\n</head>\n<body>\n    <p id="p1"></p>\n    <script>\n       for(var i=1;i<=10;i++){\n           document.getElementById("p1").innerHTML+=i+"<br>";\n       }\n    </script>\n</body>\n</html> -->`,
+      2: `<!-- 2.Write a function that takes a number and returns true if it is even, otherwise false. -->\n\n<!-- <!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Question 2</title>\n</head>\n<body>\n    <script>\n        function Even(){\n            var num = document.getElementById("n").value;\n            if(num % 2 ==0){\n                document.getElementById("p1").innerHTML="True";\n            }\n            else{\n                document.getElementById("p1").innerHTML="False";\n\n            }\n        }\n\n    </script>\n    Enter Number:<input type="text" id="n" name="number">\n    <p id="p1"></p>\n    <button onclick="Even()">Check Even</button>\n</body>\n</html> -->`,
+      3: `<!-- 3.Write a program to find the largest number in an array. -->\n\n<!-- <!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Question 3</title>\n</head>\n<body>\n    <script>\n        var arr = [10,5,85,70,96,4];\n        var largest = arr[0];\n        for(var i=1;i<arr.length;i++){\n            if(arr[i]>largest){\n                largest=arr[i];\n            }\n        }\n        document.write("Array: " +arr+ "<br>");\n        document.write("The largest number in the array is: "+largest);\n    </script>\n</body>\n</html> -->`,
+      4: `<!-- 4.Write a function to reverse a string -->\n<!-- \n<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Question 4</title>\n</head>\n<body>\n    <script>\n        function reversestr(){\n            var str = document.getElementById("str").value;\n            var revstr = "";\n            for(var i=str.length-1;i>=0;i--){\n                revstr+=str[i];\n            }\n            document.getElementById("p1").innerHTML="Reversed String: "+revstr;\n        }\n    </script>\n    Enter String: <input type="text" id="str">\n    <p id="p1"></p>\n    <button onclick="reversestr()">Click here</button>\n</body>\n</html> -->`,
+      5: `<!-- 5.Write a program to count the number of vowels in a given string. -->\n<!-- <!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Question 5</title>\n</head>\n<body>\n    <script>\n        function vowels(){\n            var str = document.getElementById("str").value || "";\n            var count = 0;\n            for (var i = 0; i < str.length; i++) {\n                var ch = str[i].toLowerCase();\n                if ("aeiou".indexOf(ch) !== -1) {\n                    count++;\n                }\n            }\n            document.getElementById("p1").textContent = "vowels: " + count;\n        }\n    </script>\n    <input type="text" id="str">\n    <p id="p1"></p>\n    <button onclick="vowels()">Click Here</button>\n</body>\n</html> -->`,
+      6: `<!-- 6.Write a function that takes an array of numbers and returns a new array containing only even numbers. -->\n <!-- <!DOCTYPE html>\n <html lang="en">\n <head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Question 6</title>\n </head>\n <body>\n    <script>\n        function evenarr(){\n            var arr = [10,15,22,33,40,55,60];\n            var evenarr = [];\n            for(var i=0;i<arr.length;i++){\n                if(arr[i] % 2 == 0){\n                    evenarr.push(arr[i]);\n                }\n            }\n            document.write("Original Array: " + arr + "<br>");\n            document.write("Even Numbers Array: " + evenarr);\n        }\n        evenarr();  \n    </script>\n </body>\n </html> -->`,
+      7: `<!-- 7.Write a program to calculate the factorial of n  a number -->\n\n<!-- <!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Question 7</title>\n</head>\n<body>\n    <script>\n        function factorial(){\n            var n = document.getElementById("f1").value\n            var fact = 1;\n            for(var i=1;i<=n;i++){\n                fact*=i;\n            }\n            document.getElementById("p1").innerHTML = "Factorial: " + fact;\n        }\n    </script>\n    Enter Number: <input type="text" id="f1">\n    <p id="p1"></p>\n    <button onclick="factorial()">Calculate Factorial</button>\n</body>\n</html> -->`,
+      8: `<!-- 8.Write a function that checks whether a given string is a palindrome. -->\n\n<!-- <!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Question 8</title>\n</head>\n<body>\n    <script>\n        function isPalindrome(){\n            var s = document.getElementById("pali").value || "";\n            var clean = s.toLowerCase().replace(/[^a-z0-9]/g, "");\n            var rev = clean.split("").reverse().join("");\n            var result = clean === rev;\n            document.getElementById("p1").innerHTML = result ? "Palindrome" : "Not a palindrome";\n        }\n    </script>\n    Enter String: <input type="text" id="pali">\n    <p id="p1"></p>\n    <button onclick="isPalindrome()">Check Palindrome</button>\n</body>\n</html> -->`,
+      9: `<!-- 9.Write a program to remove duplicate elements from an array. -->\n\n<!-- <!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Question 9</title>\n</head>\n<body>\n    <script>\n        function removeDuplicates(){\n            var arr = document.getElementById("a1").value.split(',').map(Number);\n            var unique = Array.from(new Set(arr));\n            document.getElementById("p1").innerHTML = "Original Array: " + arr + "<br>Unique Array: " + unique;\n        }\n        removeDuplicates();\n    </script>\n    Enter Array: <input type="text" id="a1">\n    <p id="p1"></p>\n    <button onclick="removeDuplicates()">Remove Duplicates</button>\n</body>\n</html> -->`,
+      10: `<!-- 10.Write a function that takes an array of numbers and returns the sum of all elements. -->\n\n<!-- <!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Question 10</title>\n</head>\n<body>\n    <script>\n        function sumArray(){\n            var arr = document.getElementById("a1").value.split(',').map(Number);   \n            var sum = 0;\n            for(var i=0;i<arr.length;i++){\n                sum += arr[i];\n            }\n            document.getElementById("p1").innerHTML = "Array: " + arr + "<br>Sum: " + sum;\n        }\n    </script>\n    Enter array: <input type="text" id="a1">\n    <p id="p1"></p>\n    <button onclick="sumArray()">Calculate Sum</button>\n</body>\n</html> -->`
+    };
+
+    function toggleCode(i){
+      var el = document.getElementById('code'+i);
+      if(!el) return;
+      if(el.style.display === 'none'){
+        el.textContent = QCODE[i] || 'Code not found.';
+        el.style.display = 'block';
+      } else {
+        el.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
